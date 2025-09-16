@@ -1,6 +1,11 @@
 document.addEventListener('DOMContentLoaded', async () => {
     const apiBaseUrl = 'https://app-ipb.onrender.com';
-    const cpfUsuario = '12345678900';
+    const cpfUsuario = localStorage.getItem('cpf_usuario');
+
+    if (!cpfUsuario) {
+        window.location.href = 'login.html'; 
+        return;
+    }
 
     try {
         const response = await fetch(`${apiBaseUrl}/users/historico/${cpfUsuario}`);

@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('form-cadastro');
+    const form = document.getElementById('form-login');
     const messageArea = document.getElementById('message-area');
     const apiBaseUrl = 'https://app-ipb.onrender.com';
 
@@ -7,35 +7,35 @@ document.addEventListener('DOMContentLoaded', () => {
         event.preventDefault();
 
         const email = document.getElementById('email').value;
-        const cpf = document.getElementById('cpf').value;
         const senha = document.getElementById('senha').value;
 
         messageArea.style.display = 'none';
         messageArea.textContent = '';
-        messageArea.className = 'message';
+        messageArea.className = 'notification mt-4';
 
         try {
-            const response = await fetch(`${apiBaseUrl}/users/register-first-stage`, {
+            const response = await fetch(`${apiBaseUrl}/users/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ email, cpf, senha })
+                body: JSON.stringify({ email, senha })
             });
 
             const result = await response.json();
 
             if (response.ok) {
-                // Se o cadastro foi bem-sucedido, armazena o CPF e redireciona
-                localStorage.setItem('cpf_usuario', cpf); 
-                messageArea.textContent = 'Primeira etapa concluída! Prossiga para o cadastro completo usando o seu CPF.';
+                // Se o login foi bem-sucedido, salva o CPF no localStorage
+                // e redireciona para a página de histórico
+                localStorage.setItem('cpf_usuario', result.cpf_usuario);
+                messageArea.textContent = 'Login bem-sucedido!';
                 messageArea.classList.add('is-success');
-                // Redireciona para a próxima página do cadastro
                 setTimeout(() => {
-                    window.location.href = 'cadastro-segundo-passo.html';
+                    window.location.href = 'historico.html';
                 }, 1500);
+
             } else {
-                messageArea.textContent = result.detail || 'Ocorreu um erro no cadastro.';
+                messageArea.textContent = result.detail || 'Ocorreu um erro no login.';
                 messageArea.classList.add('is-danger');
             }
         } catch (error) {
