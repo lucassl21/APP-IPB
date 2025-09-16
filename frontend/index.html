@@ -24,15 +24,10 @@
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <style>
-        /* Define a paleta de cores principal da logo */
         :root {
-            --my-primary-color: #2F5968; /* Tom de azul-petróleo da logo */
-            --my-secondary-color: #DD862C; /* Laranja da logo */
-            --my-light-color: #F8F8F8;
-            --my-text-color: #363636;
+            --my-primary-color: #2F5968;
+            --my-light-color: #8CC4D1;
         }
-
-        /* Classes de cores personalizadas */
         .is-primary {
             background-color: var(--my-primary-color) !important;
             border-color: transparent !important;
@@ -48,17 +43,10 @@
         .is-primary[href]:hover, a.is-primary:hover {
             opacity: 0.9;
         }
-        .is-link {
-            background-color: var(--my-secondary-color) !important;
-            color: white !important;
-            border-color: transparent !important;
-        }
 
-        /* --- Tipografia e Layout --- */
         body {
-            background-color: #e9ebee;
+            background-color: #f5f5f5;
             font-family: 'Open Sans', sans-serif;
-            color: var(--my-text-color);
         }
         .title {
             font-family: 'Playfair Display', serif;
@@ -92,8 +80,8 @@
             padding-top: 5rem;
             padding-bottom: 5rem;
         }
-        .box-with-shadow {
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        .programa-box {
+            background-color: #f0f0f0;
         }
     </style>
 </head>
@@ -105,14 +93,12 @@
                 <img src="images/logo.png" alt="Logo da Igreja" class="logo">
                 <h1 class="title is-6 has-text-dark">IGREJA PRESBITERIANA DE IGARAPÉ</h1>
             </a>
-            
             <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
             </a>
         </div>
-
         <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-end">
                 <a class="navbar-item" href="#quem-somos-section">
@@ -142,7 +128,7 @@
     </section>
 
     <section class="section" id="quem-somos-section">
-        <div class="container box-with-shadow">
+        <div class="container">
             <div class="columns is-centered">
                 <div class="column is-8">
                     <h3 class="title is-4 has-text-centered has-text-primary">QUEM SOMOS E NO QUE CREMOS</h3>
@@ -157,7 +143,7 @@
     <section class="section">
         <div class="container">
             <div class="columns is-centered">
-                <div class="column is-6 box has-text-centered box-with-shadow">
+                <div class="column is-6 box programa-box has-text-centered">
                     <h4 class="title is-4 has-text-primary">Programação da Igreja</h4>
                     <p class="is-size-5 has-text-weight-bold">Domingo</p>
                     <p>• Escola Bíblica: às 09:00 horas</p>
@@ -179,8 +165,22 @@
             </p>
         </div>
     </footer>
-
-    <script src="script.js"></script>
     
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+            if ($navbarBurgers.length > 0) {
+                $navbarBurgers.forEach(el => {
+                    el.addEventListener('click', () => {
+                        const target = el.dataset.target;
+                        const $target = document.getElementById(target);
+                        el.classList.toggle('is-active');
+                        $target.classList.toggle('is-active');
+                    });
+                });
+            }
+        });
+    </script>
+    <script src="script.js"></script>
 </body>
 </html>
