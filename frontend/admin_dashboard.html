@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel do Administrador</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <style>
+        .container { margin-top: 50px; }
+        .chart-container {
+            position: relative;
+            height: 40vh;
+            width: 80vw;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+
+    <section class="section">
+        <div class="container">
+            <h1 class="title is-2 has-text-centered">Painel do Administrador</h1>
+            <p class="subtitle is-5 has-text-centered">Visão geral das solicitações e usuários</p>
+        </div>
+    </section>
+
+    <div class="container is-fluid">
+        <div class="columns is-centered">
+            <div class="column is-6">
+                <div class="box">
+                    <h3 class="title is-4 has-text-centered">Estatísticas das Solicitações</h3>
+                    <div class="chart-container">
+                        <canvas id="solicitacoesChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-6">
+                <div class="box">
+                    <h3 class="title is-4 has-text-centered">Tipos de Usuários</h3>
+                    <div class="chart-container">
+                        <canvas id="usuariosChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <script src="admin_dashboard.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histórico de Solicitações</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <style>
+        .container { margin-top: 50px; }
+        .status-circle {
+            display: inline-block;
+            width: 1.2em;
+            height: 1.2em;
+            border-radius: 50%;
+            margin-right: 0.5em;
+            vertical-align: middle;
+        }
+        .status-pendente { background-color: #95A5A6; } /* Cor Cinza */
+        .status-andamento { background-color: #F1C40F; } /* Cor Amarelo */
+        .status-concluido { background-color: #2ecc71; } /* Cor Verde */
+    </style>
+</head>
+<body>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="title is-3 has-text-centered">Seu Histórico de Solicitações</h2>
+            <div class="table-container">
+                <table class="table is-fullwidth is-striped is-hoverable">
+                    <thead>
+                        <tr>
+                            <th>Tipo</th>
+                            <th>Descrição</th>
+                            <th>Data</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="historico-tabela">
+                        </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <script src="historico.js"></script>
+</body>
+</html>

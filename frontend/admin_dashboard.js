@@ -1,0 +1,93 @@
+document.addEventListener('DOMContentLoaded', async () => {
+    // ALERTA: MUDAR ESTA URL DEPOIS DE PUBLICAR SUA API NO RENDER
+    const apiBaseUrl = 'http://127.0.0.1:8000';
+
+    async function fetchData(endpoint) {
+        try {
+            const response = await fetch(`${apiBaseUrl}${endpoint}`);
+            if (!response.ok) {
+                throw new Error(`Erro ao buscar dados do endpoint: ${endpoint}`);
+            }
+            return await response.json();
+        } catch (error) {
+            console.error(error);
+            return [];
+        }
+    }
+
+    async function loadDashboard() {
+        // Busca todas as solicitações e usuários da API
+        const solicitacoes = await fetchData('/admin/solicitacoes');
+        const usuarios = await fetchData('/users/');
+
+        // --- Processamento dos Dados para os Gráficos ---
+
+        // Dados para o Gráfico de Solicitações por Status
+        const statusData = solicitacoes.reduce((acc, current) => {
+            acc[current.status] = (acc[current.status] || 0) + 1;
+            return acc;
+        }, {});
+        const statusLabels = Object.keys(statusData);
+        const statusValues = Object.values(statusData);
+        const statusColors = statusLabels.map(label => {
+            if (label === 'concluido') return '#2ecc71'; // Verde
+            if (label === 'andamento') return '#F1C40F'; // Amarelo
+            if (label === 'pendente') return '#95A5A6';  // Cinza
+            return '#34495e'; // Cor padrão
+        });
+
+        // Dados para o Gráfico de Tipos de Usuários
+        const userTypeData = usuarios.reduce((acc, current) => {
+            acc[current.tipo_usuario] = (acc[current.tipo_usuario] || 0) + 1;
+            return acc;
+        }, {});
+        const userTypeLabels = Object.keys(userTypeData);
+        const userTypeValues = Object.values(userTypeData);
+        const userTypeColors = userTypeLabels.map(label => {
+            if (label === 'doador') return '#3498db';
+            if (label === 'beneficiario') return '#e74c3c';
+            if (label === 'oracao') return '#9b59b6';
+            return '#bdc3c7';
+        });
+
+        // --- Criação dos Gráficos com Chart.js ---
+
+        // Gráfico de Solicitações por Status
+        const solicitacoesCtx = document.getElementById('solicitacoesChart').getContext('2d');
+        new Chart(solicitacoesCtx, {
+            type: 'pie',
+            data: {
+                labels: statusLabels,
+                datasets: [{
+                    label: '# de Solicitações',
+                    data: statusValues,
+                    backgroundColor: statusColors,
+                    hoverOffset: 4
+                }]
+            }
+        });
+
+        // Gráfico de Tipos de Usuários
+        const usuariosCtx = document.getElementById('usuariosChart').getContext('2d');
+        new Chart(usuariosCtx, {
+            type: 'bar',
+            data: {
+                labels: userTypeLabels,
+                datasets: [{
+                    label: '# de Usuários',
+                    data: userTypeValues,
+                    backgroundColor: userTypeColors
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    }
+
+    loadDashboard();
+});
