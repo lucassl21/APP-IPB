@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             // ALERTA: MUDAR ESTA URL DEPOIS DE PUBLICAR SUA API NO RENDER
-            const response = await fetch('http://127.0.0.1:8000/users/register-first-stage', {
+            const response = await fetch('https://igrejapresbiterianadeigarape.onrender.com/users/register-first-stage', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
