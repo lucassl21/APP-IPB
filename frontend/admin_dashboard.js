@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', async () => {
     // ALERTA: MUDAR ESTA URL DEPOIS DE PUBLICAR SUA API NO RENDER
-    const apiBaseUrl = 'http://127.0.0.1:8000';
+    const apiBaseUrl = 'https://igrejapresbiterianadeigarape.onrender.com';
 
     async function fetchData(endpoint) {
         try {
