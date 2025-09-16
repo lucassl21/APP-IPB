@@ -1,5 +1,0 @@
-fastapi
-uvicorn[standard]
-sqlmodel
-passlib[bcrypt]
-pydantic
