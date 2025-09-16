@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException, status, Depends
+from fastapi.middleware.cors import CORSMiddleware
 from typing import List, Dict, Any, Optional
 from passlib.context import CryptContext
 from sqlmodel import SQLModel, create_engine, Session, select
@@ -61,6 +62,21 @@ chave_pix_igreja = "CNPJ 22.191.725/0001-47 (Ccla De Pitangui E Regiao Ltda)"
 
 app = FastAPI()
 
+# Configuração do CORS para permitir a conexão do frontend
+origins = [
+    "http://localhost",
+    "http://localhost:8000",
+    "https://seu-app-do-netlify.netlify.app", # SUBSTITUA PELA SUA URL REAL DO NETLIFY
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 @app.on_event("startup")
 def on_startup():
     create_db_and_tables()
@@ -112,7 +128,7 @@ def user_login(user_login: UserLogin, session: Session = Depends(get_session)):
     user = session.exec(select(User).where(User.email == user_login.email)).first()
     
     if user and verify_password(user_login.senha, user.senha):
-        return {"message": "Login bem-sucedido!"}
+        return {"message": "Login bem-sucedido!", "cpf_usuario": user.cpf}
     
     raise HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
