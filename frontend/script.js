@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('form-cadastro');
     const messageArea = document.getElementById('message-area');
+    // URL da API atualizada
+    const apiBaseUrl = 'https://igrejapresbiterianadeigarape.onrender.com';
 
     form.addEventListener('submit', async (event) => {
         event.preventDefault();
@@ -14,8 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
         messageArea.className = 'message';
 
         try {
-            // ALERTA: MUDAR ESTA URL DEPOIS DE PUBLICAR SUA API NO RENDER
-            const response = await fetch('https://igrejapresbiterianadeigarape.onrender.com/users/register-first-stage', {
+            const response = await fetch(`${apiBaseUrl}/users/register-first-stage`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
