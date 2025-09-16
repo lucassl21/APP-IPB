@@ -1,8 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('form-cadastro');
     const messageArea = document.getElementById('message-area');
-    // URL da API atualizada
-    const apiBaseUrl = 'https://igrejapresbiterianadeigarape.onrender.com';
+    const apiBaseUrl = 'https://app-ipb.onrender.com';
 
     form.addEventListener('submit', async (event) => {
         event.preventDefault();

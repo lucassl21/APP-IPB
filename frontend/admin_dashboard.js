@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    // URL da API atualizada
-    const apiBaseUrl = 'https://igrejapresbiterianadeigarape.onrender.com';
+    const apiBaseUrl = 'https://app-ipb.onrender.com';
 
     async function fetchData(endpoint) {
         try {
