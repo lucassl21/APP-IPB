@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redefinir Senha</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <style>
+        .box { margin-top: 50px; }
+        .is-primary { background-color: #2F5968 !important; }
+    </style>
+</head>
+<body>
+    <section class="section">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-5 box">
+                    <h2 class="title is-4 has-text-centered">Redefinir Senha</h2>
+                    <form id="form-redefinir-senha">
+                        <div class="field">
+                            <label class="label">Código de Recuperação</label>
+                            <div class="control">
+                                <input class="input" type="text" id="token" placeholder="Código enviado para o seu e-mail" required>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Nova Senha</label>
+                            <div class="control">
+                                <input class="input" type="password" id="nova-senha" placeholder="Sua nova senha" required>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="control">
+                                <button class="button is-primary is-fullwidth" type="submit">Redefinir</button>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="message-area" class="notification mt-4" style="display: none;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="redefinir-senha.js"></script>
+</body>
+</html>

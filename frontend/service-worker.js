@@ -1,4 +1,4 @@
-const CACHE_NAME = 'my-pwa-cache-v2';
+const CACHE_NAME = 'my-pwa-cache-v3'; // Altere a versão do cache.
 const urlsToCache = [
     '/',
     '/index.html',
@@ -7,6 +7,10 @@ const urlsToCache = [
     '/cadastro.html',
     '/historico.html',
     '/admin_dashboard.html',
+    '/esqueci-senha.html',
+    '/esqueci-senha.js',
+    '/redefinir-senha.html',
+    '/redefinir-senha.js',
     '/images/icon-192x192.png',
     '/images/icon-512x512.png',
     '/images/logo.png',
