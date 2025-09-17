@@ -66,7 +66,7 @@ app = FastAPI()
 origins = [
     "http://localhost",
     "http://localhost:8000",
-    "https://seu-app-do-netlify.netlify.app", # SUBSTITUA PELA SUA URL REAL DO NETLIFY
+    "https://igrejapresbiterianadeigarape.netlify.app", # AQUI ESTÁ A URL CORRIGIDA
 ]
 
 app.add_middleware(
