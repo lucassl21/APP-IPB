@@ -1,4 +1,4 @@
-const CACHE_NAME = 'my-pwa-cache-v2'; // Nome do cache atualizado para forçar o Service Worker a salvar os novos arquivos.
+const CACHE_NAME = 'my-pwa-cache-v2';
 const urlsToCache = [
     '/',
     '/index.html',
@@ -25,7 +25,6 @@ self.addEventListener('install', event => {
     );
 });
 
-// O evento 'activate' é crucial para limpar caches antigos.
 self.addEventListener('activate', event => {
     const cacheWhitelist = [CACHE_NAME];
     event.waitUntil(
@@ -46,12 +45,10 @@ self.addEventListener('fetch', event => {
     event.respondWith(
         caches.match(event.request)
             .then(response => {
-                // Tenta carregar do cache primeiro
                 if (response) {
                     return response;
                 }
                 
-                // Se não estiver no cache, busca na rede
                 return fetch(event.request);
             })
     );
