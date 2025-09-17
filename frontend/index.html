@@ -24,86 +24,138 @@
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <style>
+        /* Variáveis de Cores e Fontes */
         :root {
-            --my-primary-color: #2F5968;
-            --my-secondary-color: #DD862C;
-            --my-light-color: #F8F8F8;
-            --my-text-color: #363636;
+            --primary-color: #2F5968;
+            --secondary-color: #DD862C;
+            --light-color: #F8F8F8;
+            --text-color: #363636;
+            --text-white: #ffffff;
+            --box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
 
+        /* Classes do Bulma Sobrescritas */
         .is-primary {
-            background-color: var(--my-primary-color) !important;
+            background-color: var(--primary-color) !important;
             border-color: transparent !important;
-            color: white !important;
-        }
-        .is-primary.is-light {
-            background-color: var(--my-light-color) !important;
-            color: var(--my-primary-color) !important;
-        }
-        .is-primary[href], a.is-primary {
-            color: white !important;
-        }
-        .is-primary[href]:hover, a.is-primary:hover {
-            opacity: 0.9;
+            color: var(--text-white) !important;
         }
         .is-link {
-            background-color: var(--my-secondary-color) !important;
-            color: white !important;
+            background-color: var(--secondary-color) !important;
+            color: var(--text-white) !important;
             border-color: transparent !important;
         }
+        .is-light {
+            background-color: rgba(255, 255, 255, 0.2) !important;
+            color: var(--text-white) !important;
+        }
 
+        /* Estilo Geral */
         body {
-            background-color: #e9ebee;
+            background-color: var(--light-color);
             font-family: 'Open Sans', sans-serif;
-            color: var(--my-text-color);
+            color: var(--text-color);
         }
         .title {
             font-family: 'Playfair Display', serif;
             font-weight: 700;
         }
+
+        /* Barra de Navegação */
+        .navbar {
+            background-color: var(--primary-color);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        .navbar-item.has-text-dark, .navbar-brand .title {
+            color: var(--text-white) !important;
+        }
+        .navbar-item, .navbar-link {
+            color: var(--text-white) !important;
+            font-weight: 600;
+        }
+        .navbar-item:hover, .navbar-link:hover {
+            color: var(--secondary-color) !important;
+        }
+
+        /* Hero */
+        .hero.is-medium {
+            height: 60vh;
+        }
         .hero-image {
-            background: url('images/WhatsApp Image 2025-09-15 at 21.48.55.jpeg') no-repeat center center;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/sua-foto-de-igreja.jpeg') no-repeat center center;
             background-size: cover;
             background-attachment: fixed;
-            height: 550px;
-            position: relative;
-        }
-        .hero-image .hero-body {
+            color: var(--text-white);
             display: flex;
             align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            background-color: rgba(0, 0, 0, 0.4);
-            height: 100%;
-        }
-        .hero-image .title, .hero-image .subtitle {
-            color: white;
+            justify-content: flex-start;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
         }
-        .navbar-brand .logo {
-            max-height: 45px;
-            margin-right: 10px;
+        .hero-image .title, .hero-image .subtitle {
+            color: var(--text-white);
         }
-        .section {
-            padding-top: 5rem;
-            padding-bottom: 5rem;
+        .hero-content {
+            padding-left: 2rem;
+            max-width: 50%;
         }
+
+        /* Caixas de Conteúdo */
         .box-with-shadow {
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--box-shadow);
+            border-radius: 10px;
         }
-        .navbar-burger span {
-            background-color: var(--my-text-color);
+        .box {
+            border-radius: 10px;
         }
+
+        .columns-center-mobile {
+            justify-content: center;
+        }
+        @media screen and (min-width: 769px) {
+            .columns-center-mobile {
+                justify-content: flex-start;
+            }
+        }
+        .content-box-container {
+            margin-top: -80px; /* Para as caixas sobreporem a imagem do hero */
+            z-index: 10;
+            position: relative;
+        }
+        .content-box {
+            background-color: var(--text-white);
+            border-radius: 10px;
+            box-shadow: var(--box-shadow);
+            padding: 2rem;
+            height: 100%;
+        }
+        .content-box h3 {
+            color: var(--primary-color);
+        }
+        .content-box img {
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        /* Estilo da Programação */
+        .schedule-item {
+            margin-bottom: 1rem;
+        }
+        .schedule-item p {
+            margin-bottom: 0.2rem;
+        }
+        .schedule-item strong {
+            color: var(--primary-color);
+        }
+
     </style>
 </head>
 <body>
 
-    <nav class="navbar is-light" role="navigation" aria-label="main navigation">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a class="navbar-item" href="#">
                 <img src="images/logo.png" alt="Logo da Igreja" class="logo">
-                <h1 class="title is-6 has-text-dark">IGREJA PRESBITERIANA DE IGARAPÉ</h1>
+                <h1 class="title is-6">IGREJA PRESBITERIANA DE IGARAPÉ</h1>
             </a>
             
             <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -122,7 +174,7 @@
                 </a>
                 <div class="navbar-item">
                     <div class="buttons">
-                        <a class="button is-primary is-light" href="cadastro.html">
+                        <a class="button is-light" href="cadastro.html">
                             <strong>Cadastre-se</strong>
                         </a>
                         <a class="button is-link" href="login.html">
@@ -136,41 +188,51 @@
 
     <section class="hero is-medium hero-image">
         <div class="hero-body">
-            
+            <div class="container hero-content">
+                <h1 class="title is-2">
+                    Comunidade Fé Viva
+                </h1>
+                <h2 class="subtitle is-5">
+                    Um lugar para se conectar e crescer na fé.
+                </h2>
+                <a class="button is-link is-large mt-4">
+                    Baixe o App
+                </a>
+            </div>
         </div>
     </section>
 
-    <section class="section" id="quem-somos-section">
-        <div class="container box-with-shadow">
-            <div class="columns is-centered">
-                <div class="column is-8">
-                    <h3 class="title is-4 has-text-centered has-text-primary">QUEM SOMOS E NO QUE CREMOS</h3>
+    <div class="container content-box-container">
+        <div class="columns is-centered">
+            <div class="column is-4">
+                <div class="content-box">
+                    <h3 class="title is-5 has-text-centered">QUEM SOMOS</h3>
                     <p class="has-text-justified">
                         Sustentamos as doutrinas características de todos os cristãos - incluindo a <strong>Trindade</strong>; a verdadeira <strong>Deidade e verdadeira Humanidade de Jesus Cristo</strong>; a necessidade do sacrifício de Jesus para expiação dos pecados; a igreja como instituição divinamente estabelecida; a <strong>inspiração da Bíblia</strong>; a exigência para que os cristãos tenham uma vida com ética e justiça; e a <strong>ressurreição do corpo</strong>.
                     </p>
                 </div>
             </div>
-        </div>
-    </section>
-    
-    <section class="section">
-        <div class="container">
-            <div class="columns is-centered">
-                <div class="column is-6 box has-text-centered box-with-shadow">
-                    <h4 class="title is-4 has-text-primary">Programação da Igreja</h4>
-                    <p class="is-size-5 has-text-weight-bold">Domingo</p>
-                    <p>• Escola Bíblica: às 09:00 horas</p>
-                    <p>• Culto Solene: às 19:00 horas</p>
-                    <br>
-                    <p class="is-size-5 has-text-weight-bold">Terça-feira</p>
-                    <p>• Reunião de Oração: às 19:00 horas</p>
-                    <br>
-                    <p>• Estudo Bíblico: às 19:00 horas</p>
+            <div class="column is-4">
+                <div class="content-box">
+                    <h3 class="title is-5 has-text-centered">PROGRAMAÇÃO</h3>
+                    <div class="schedule-item">
+                        <p class="is-size-5 has-text-weight-bold">Domingo</p>
+                        <p>• Escola Bíblica: às 09:00 horas</p>
+                        <p>• Culto Solene: às 19:00 horas</p>
+                    </div>
+                    <div class="schedule-item">
+                        <p class="is-size-5 has-text-weight-bold">Terça-feira</p>
+                        <p>• Reunião de Oração: às 19:00 horas</p>
+                    </div>
+                    <div class="schedule-item">
+                        <p class="is-size-5 has-text-weight-bold">Quinta-feira</p>
+                        <p>• Estudo Bíblico: às 19:00 horas</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
-
+    </div>
+    
     <footer class="footer">
         <div class="content has-text-centered">
             <p>
@@ -195,5 +257,6 @@
         });
     </script>
     <script src="script.js"></script>
+
 </body>
 </html>
