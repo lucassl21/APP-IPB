@@ -1,6 +1,0 @@
-fastapi
-uvicorn[standard]
-sqlmodel
-passlib
-bcrypt==3.2.0
-pydantic[email]
